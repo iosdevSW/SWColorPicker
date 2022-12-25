@@ -1,0 +1,22 @@
+{
+  "name": "SWColorPicker",
+  "version": "0.1.0",
+  "summary": "A short description of SWColorPicker.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/iosdev.sw/SWColorPicker",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "iosdev.sw": "iosdev.sw@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/iosdev.sw/SWColorPicker.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "SWColorPicker/Classes/**/*"
+}

@@ -1,0 +1,6 @@
+framework module SWColorPicker {
+  umbrella header "SWColorPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

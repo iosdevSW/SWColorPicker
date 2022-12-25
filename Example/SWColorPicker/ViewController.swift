@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SWColorPicker
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let colorWheel = ColorWheel(frame: .init(x: 0, y: 0, width: 300, height: 300))
+        self.view.addSubview(colorWheel)
     }
 
     override func didReceiveMemoryWarning() {
