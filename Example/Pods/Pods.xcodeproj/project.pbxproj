@@ -25,8 +25,6 @@
 		DB95AC42295ACC72001D1CE4 /* SWColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95AC40295ACC72001D1CE4 /* SWColorPickerView.swift */; };
 		DB95AC44295ADB0B001D1CE4 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95AC43295ADB0B001D1CE4 /* Protocols.swift */; };
 		DB95AC45295ADB0B001D1CE4 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95AC43295ADB0B001D1CE4 /* Protocols.swift */; };
-		DB95AC48295B2965001D1CE4 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95AC47295B2965001D1CE4 /* PaddingLabel.swift */; };
-		DB95AC49295B2965001D1CE4 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95AC47295B2965001D1CE4 /* PaddingLabel.swift */; };
 		E764E61017434AB395E8B77FBA70B559 /* SWColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 191500B139B067272880BF63F1F69C0B /* SWColorPicker-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +77,6 @@
 		DB95AC3D295A080E001D1CE4 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		DB95AC40295ACC72001D1CE4 /* SWColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWColorPickerView.swift; sourceTree = "<group>"; };
 		DB95AC43295ADB0B001D1CE4 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		DB95AC47295B2965001D1CE4 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		E4D4FE7445137899659410CA1BDC743E /* SWColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWColorPicker-prefix.pch"; sourceTree = "<group>"; };
 		ED29A3E984783B34B0DDA906B7EEE9E8 /* SWColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWColorPicker-umbrella.h"; sourceTree = "<group>"; };
 		EDE6C67F13B912C9EDD6E7546B7022B1 /* SWColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SWColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,7 +148,6 @@
 		5F601F2EB63F8DEDD80D47CCC8E47E85 /* SWColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				DB95AC46295B292F001D1CE4 /* Custom */,
 				DB95AC43295ADB0B001D1CE4 /* Protocols.swift */,
 				DB95AC232957FD5A001D1CE4 /* Utils.swift */,
 				DB95AC3D295A080E001D1CE4 /* ColorModel.swift */,
@@ -242,14 +238,6 @@
 				EDE6C67F13B912C9EDD6E7546B7022B1 /* SWColorPicker.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		DB95AC46295B292F001D1CE4 /* Custom */ = {
-			isa = PBXGroup;
-			children = (
-				DB95AC47295B2965001D1CE4 /* PaddingLabel.swift */,
-			);
-			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,7 +385,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				146667125D031D5BCCE5F2A7D9DABCFB /* ColorWheel.swift in Sources */,
-				DB95AC49295B2965001D1CE4 /* PaddingLabel.swift in Sources */,
 				E764E61017434AB395E8B77FBA70B559 /* SWColorPicker-dummy.m in Sources */,
 				DB95AC42295ACC72001D1CE4 /* SWColorPickerView.swift in Sources */,
 				DB95AC45295ADB0B001D1CE4 /* Protocols.swift in Sources */,
@@ -411,7 +398,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				188BEB1851B42DBE0D7DE4050B695227 /* Pods-SWColorPicker_Example-dummy.m in Sources */,
-				DB95AC48295B2965001D1CE4 /* PaddingLabel.swift in Sources */,
 				DB95AC3B29582717001D1CE4 /* ColorWheel.swift in Sources */,
 				DB95AC41295ACC72001D1CE4 /* SWColorPickerView.swift in Sources */,
 				DB95AC44295ADB0B001D1CE4 /* Protocols.swift in Sources */,
