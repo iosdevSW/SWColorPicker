@@ -2,7 +2,14 @@ import UIKit
 
 public class ColorWheel: UIView {
     //MARK: - Properties
+    private var length: CGFloat!
+    private var point: CGPoint!
+    private var pointerRadius: CGFloat = 12
+    
+    weak var delegate: ColorWheelDelegate?
+    
     private let colorWheelLayer = CALayer()
+    
     private let pointerLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.lineWidth = 2
@@ -10,12 +17,6 @@ public class ColorWheel: UIView {
         
         return layer
     }()
-    
-    private var length: CGFloat!
-    private var point: CGPoint!
-    private var pointerRadius: CGFloat = 14
-    
-    weak var delegate: ColorWheelDelegate?
     
     //MARK: - Init
     public override init(frame: CGRect) {
@@ -67,7 +68,7 @@ public class ColorWheel: UIView {
         self.pointerLayer.path = path.cgPath
     }
     
-    // MARK: - ColorWheel CG이미지 만드는 함수
+    // MARK: - ColorWheel CGImage 만드는 함수
     private func createColorWheelImage(_ size: CGSize) -> CGImage {
         let bufferSize = Int(length * length * 4)   // 버퍼 사이즈는 RGBA를 사용하므로 총 4개의 컴포넌트를 사용하므로 * 4 즉
         // 한 픽셀에 4바이트라는 말이다.
@@ -83,6 +84,7 @@ public class ColorWheel: UIView {
             var rgb = RGB(red: 0, green: 0, blue: 0, alpha: 0)
             
             if hsv.saturation <= 1.0 { rgb = hsvToRGB(hsv) }
+            if hsv.saturation <= 1.0 && hsv.saturation > 0.99 { rgb.alpha = (1.0 - hsv.saturation) * 100 }
             
             let ptr = Int(i*4)
             dataPtr?[ptr] = UInt8(rgb.red*255)

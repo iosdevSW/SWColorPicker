@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = .lightGray
         let colorPicker = SWColorPickerView()
         self.view.addSubview(colorPicker)
         colorPicker.translatesAutoresizingMaskIntoConstraints = false

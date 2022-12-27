@@ -10,3 +10,7 @@ import Foundation
 protocol ColorWheelDelegate: AnyObject {
     func selectedColor(_ color: RGB)
 }
+
+protocol SWColorPickerViewDelegate: AnyObject {
+    func selectedColor(_ color: UIColor)
+}
