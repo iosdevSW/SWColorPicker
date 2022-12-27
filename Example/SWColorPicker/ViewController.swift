@@ -14,8 +14,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let colorWheel = ColorWheel(frame: .init(x: 0, y: 0, width: 300, height: 300))
-        self.view.addSubview(colorWheel)
+        let colorPicker = SWColorPickerView()
+        self.view.addSubview(colorPicker)
+        colorPicker.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            colorPicker.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            colorPicker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            colorPicker.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
+            colorPicker.heightAnchor.constraint(equalToConstant: 400),
+        ])
     }
 
     override func didReceiveMemoryWarning() {

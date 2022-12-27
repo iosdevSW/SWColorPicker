@@ -7,15 +7,11 @@
 
 import Foundation
 
-typealias RGB = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-
-typealias HSV = (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)
-
 func hsvToRGB(_ hsv: HSV) -> RGB {
     var r,g,b: CGFloat
     let hue = Int(hsv.hue * 6)
-    let c = hsv.brightness * hsv.saturation
-    let m = hsv.brightness - c
+    let c = hsv.value * hsv.saturation
+    let m = hsv.value - c
     let a = ((hsv.hue*360)/60).truncatingRemainder(dividingBy: 2)
     let x = c * ( 1 -  abs(a - 1) )
     
@@ -29,7 +25,7 @@ func hsvToRGB(_ hsv: HSV) -> RGB {
     default: r = c; g = x; b = 0; break;
     }
     
-    return (red: r + m, green: g + m, blue: b + m, alpha: hsv.alpha)
+    return RGB(red: r + m, green: g + m, blue: b + m, alpha: hsv.alpha)
 }
 
 func rgbToHSV(_ rgb: RGB) -> HSV {
@@ -49,5 +45,5 @@ func rgbToHSV(_ rgb: RGB) -> HSV {
         hue /= 6
     }
     
-    return (hue: hue, saturation: saturation, brightness: maxValue, alpha: rgb.alpha)
+    return HSV(hue: hue, saturation: saturation, value: maxValue, alpha: rgb.alpha)
 }
