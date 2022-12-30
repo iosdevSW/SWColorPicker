@@ -57,6 +57,7 @@ public class ColorWheel: UIView {
     }
     
     private func drawPointerLayer() {
+        self.pointerRadius = length * 0.055
         let path = UIBezierPath(roundedRect: .init(x: point.x - pointerRadius,
                                                    y: point.y - pointerRadius,
                                                    width: pointerRadius*2,
@@ -109,8 +110,8 @@ public class ColorWheel: UIView {
     private func getHSVAtPoint(_ point: CGPoint) -> HSV {
         let center = length / 2 // 반지름이자. 중앙 x,y좌표
         let nx = (center - point.x) / center // 0~1.0값으로 표현하기 위해 반지름으로 다시 나누어준다.
-        let ny = (center - point.y) / center //
-        let saturation = sqrt(CGFloat(nx*nx + ny*ny)) // 이건 피타고라스 정리를 통해 길이를 구하는 것!
+        let ny = (center - point.y) / center
+        let saturation = sqrt(CGFloat(nx*nx + ny*ny)) // 피타고라스 정리 s구하기
         var hue: CGFloat = saturation == 0 ? 0 : acos(nx/saturation) / CGFloat.pi / 2.0
         if ny < 0 { hue = 1.0 - hue }
         
@@ -119,9 +120,9 @@ public class ColorWheel: UIView {
     
     private func getPointAtHSV(_ hsv: HSV) -> CGPoint {
         let center = length / 2
-        let radius: CGFloat = center
-        let x = center + radius * -cos(hsv.hue * CGFloat.pi * 2) // 삼각비 이용
-        let y = center + radius * -sin(hsv.hue * CGFloat.pi * 2) // 삼각비 이용
+
+        let x = center + center * -cos(hsv.hue * CGFloat.pi * 2) // 삼각비 이용
+        let y = center + center * -sin(hsv.hue * CGFloat.pi * 2) // 삼각비 이용
         
         return CGPoint(x: x, y: y)
     }

@@ -16,6 +16,8 @@
 		4A5AE8C1DA0BE16F9DCC75B40F5918F9 /* Pods-SWColorPicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AC40219CD207E0FD66C84F4F098A331 /* Pods-SWColorPicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4E8D73A2D93793D883890BFFFFCD7A9E /* SWColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ED29A3E984783B34B0DDA906B7EEE9E8 /* SWColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		854C43342E2899BC34E638651F9DA8BF /* Pods-SWColorPicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AACA281F713A79C3EBCDD0E4B276BDD /* Pods-SWColorPicker_Tests-dummy.m */; };
+		DB707544295EB8E30027FA98 /* BrightnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB707543295EB8E30027FA98 /* BrightnessView.swift */; };
+		DB707545295EB8E30027FA98 /* BrightnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB707543295EB8E30027FA98 /* BrightnessView.swift */; };
 		DB95AC242957FD5A001D1CE4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95AC232957FD5A001D1CE4 /* Utils.swift */; };
 		DB95AC3B29582717001D1CE4 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1256F97ADDCDD9B888B1B32AEFA49E6 /* ColorWheel.swift */; };
 		DB95AC3C29587C74001D1CE4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95AC232957FD5A001D1CE4 /* Utils.swift */; };
@@ -73,6 +75,7 @@
 		B17DAA8BCBBF5D4970DA6ED1E83E1550 /* Pods-SWColorPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SWColorPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C05E731FAC9524FB982A65464C35EB0E /* Pods_SWColorPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWColorPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AB23AFF8C4BD07FC5BD8CE22C1CB41 /* Pods-SWColorPicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SWColorPicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		DB707543295EB8E30027FA98 /* BrightnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessView.swift; sourceTree = "<group>"; };
 		DB95AC232957FD5A001D1CE4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = SWColorPicker/Classes/Utils.swift; sourceTree = "<group>"; };
 		DB95AC3D295A080E001D1CE4 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		DB95AC40295ACC72001D1CE4 /* SWColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWColorPickerView.swift; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 				DB95AC3D295A080E001D1CE4 /* ColorModel.swift */,
 				DB95AC40295ACC72001D1CE4 /* SWColorPickerView.swift */,
 				F1256F97ADDCDD9B888B1B32AEFA49E6 /* ColorWheel.swift */,
+				DB707543295EB8E30027FA98 /* BrightnessView.swift */,
 				B883310D898E4A4802961939A423EA70 /* Pod */,
 				55AC680C67B4BE89DB6265D887036964 /* Support Files */,
 			);
@@ -385,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				146667125D031D5BCCE5F2A7D9DABCFB /* ColorWheel.swift in Sources */,
+				DB707545295EB8E30027FA98 /* BrightnessView.swift in Sources */,
 				E764E61017434AB395E8B77FBA70B559 /* SWColorPicker-dummy.m in Sources */,
 				DB95AC42295ACC72001D1CE4 /* SWColorPickerView.swift in Sources */,
 				DB95AC45295ADB0B001D1CE4 /* Protocols.swift in Sources */,
@@ -398,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				188BEB1851B42DBE0D7DE4050B695227 /* Pods-SWColorPicker_Example-dummy.m in Sources */,
+				DB707544295EB8E30027FA98 /* BrightnessView.swift in Sources */,
 				DB95AC3B29582717001D1CE4 /* ColorWheel.swift in Sources */,
 				DB95AC41295ACC72001D1CE4 /* SWColorPickerView.swift in Sources */,
 				DB95AC44295ADB0B001D1CE4 /* Protocols.swift in Sources */,

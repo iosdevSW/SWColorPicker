@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class SWColorPickerView: UIView {
+open class SWColorPickerView: UIView {
     //MARK: - Propertie
     private var selectedColor: UIColor = .white
     
@@ -15,6 +15,13 @@ public class SWColorPickerView: UIView {
     
     private let colorWheel: ColorWheel = {
         let view = ColorWheel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    private let brightnessView: BrightnessView = {
+        let view = BrightnessView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -61,7 +68,7 @@ public class SWColorPickerView: UIView {
         colorWheel.delegate = self
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -73,6 +80,7 @@ public class SWColorPickerView: UIView {
     //MARK: - AddSubView
     private func addSubView() {
         self.addSubview(self.colorWheel)
+        self.addSubview(self.brightnessView)
         self.addSubview(self.selectedColorView)
         self.addSubview(self.colorLabel)
         self.addSubview(self.doneButton)
@@ -80,22 +88,38 @@ public class SWColorPickerView: UIView {
     
     //MARK: - Layout
     private func layout() {
+        if self.frame.width > self.frame.height {
+            NSLayoutConstraint.activate([
+                self.colorWheel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+                self.colorWheel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6),
+                self.colorWheel.widthAnchor.constraint(equalTo: self.colorWheel.heightAnchor),
+                self.colorWheel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -40),
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                self.colorWheel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+                self.colorWheel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
+                self.colorWheel.heightAnchor.constraint(equalTo: self.colorWheel.widthAnchor),
+                self.colorWheel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -40),
+            ])
+        }
+        
         NSLayoutConstraint.activate([
-            self.colorWheel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            self.colorWheel.widthAnchor.constraint(equalToConstant: 200),
-            self.colorWheel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            self.colorWheel.heightAnchor.constraint(equalTo: self.colorWheel.widthAnchor)
+            self.brightnessView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            self.brightnessView.topAnchor.constraint(equalTo: self.colorWheel.topAnchor, constant: 20),
+            self.brightnessView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1),
+            self.brightnessView.heightAnchor.constraint(equalTo: self.colorWheel.heightAnchor, multiplier: 0.8)
         ])
         
         NSLayoutConstraint.activate([
-            self.colorLabel.leadingAnchor.constraint(equalTo: self.colorWheel.trailingAnchor, constant: 20),
-            self.colorLabel.topAnchor.constraint(equalTo: self.colorWheel.topAnchor, constant: 20),
+            self.colorLabel.centerXAnchor.constraint(equalTo: self.colorWheel.centerXAnchor),
+            self.colorLabel.topAnchor.constraint(equalTo: self.colorWheel.bottomAnchor, constant:0),
         ])
         
         NSLayoutConstraint.activate([
             self.selectedColorView.topAnchor.constraint(equalTo: self.colorLabel.bottomAnchor, constant: 4),
-            self.selectedColorView.leadingAnchor.constraint(equalTo: self.colorWheel.trailingAnchor, constant: 20),
-            self.selectedColorView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.selectedColorView.centerXAnchor.constraint(equalTo: self.colorLabel.centerXAnchor),
+            self.selectedColorView.widthAnchor.constraint(equalTo: self.colorWheel.widthAnchor, multiplier: 0.4),
             self.selectedColorView.heightAnchor.constraint(equalToConstant: 36)
         ])
         

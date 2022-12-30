@@ -34,6 +34,7 @@ func rgbToHSV(_ rgb: RGB) -> HSV {
     let delta = maxValue - minValue
     let saturation: CGFloat = maxValue == 0 ? 0 : delta / minValue
     var hue: CGFloat = 0
+    
     if delta == 0 {
         hue = 0
     } else {
