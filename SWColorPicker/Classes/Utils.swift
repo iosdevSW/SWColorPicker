@@ -7,7 +7,7 @@
 
 import Foundation
 
-func hsvToRGB(_ hsv: HSV) -> RGB {
+public func hsvToRGB(_ hsv: HSV) -> RGB {
     var r,g,b: CGFloat
     let hue = Int(hsv.hue * 6)
     let c = hsv.value * hsv.saturation
@@ -28,7 +28,7 @@ func hsvToRGB(_ hsv: HSV) -> RGB {
     return RGB(red: r + m, green: g + m, blue: b + m, alpha: hsv.alpha)
 }
 
-func rgbToHSV(_ rgb: RGB) -> HSV {
+public func rgbToHSV(_ rgb: RGB) -> HSV {
     let maxValue: CGFloat = max(rgb.red, rgb.green, rgb.blue)
     let minValue: CGFloat = min(rgb.red, rgb.green, rgb.blue)
     let delta = maxValue - minValue
@@ -46,8 +46,6 @@ func rgbToHSV(_ rgb: RGB) -> HSV {
         }
         hue /= 6
     }
-    let result = HSV(hue: hue, saturation: saturation, value: maxValue, alpha: rgb.alpha)
-    
-    
+
     return HSV(hue: hue, saturation: saturation, value: maxValue, alpha: rgb.alpha)
 }

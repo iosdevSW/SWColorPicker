@@ -189,7 +189,7 @@ public class SWColorPickerView: UIView {
 }
 
 extension SWColorPickerView: ColorWheelViewDelegate {
-    func selectedColor(_ color: HSV) {
+    public func selectedColor(_ color: HSV) {
         self.selectedColor = color
         self.selectedColorView.backgroundColor = color.uiColor
         self.brightnessView.resetPointLayer()
@@ -198,7 +198,7 @@ extension SWColorPickerView: ColorWheelViewDelegate {
 }
 
 extension SWColorPickerView: BrightnessViewDelegate {
-    func changedBrightness(_ value: CGFloat) {
+    public func changedBrightness(_ value: CGFloat) {
         self.selectedColor.value = value
         self.selectedColorView.backgroundColor = self.selectedColor.uiColor
     }
