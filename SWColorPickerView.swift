@@ -40,7 +40,17 @@ open class SWColorPickerView: UIView {
     private let selectedColorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 6
+        
+        return view
+    }()
+    
+    private let sunImageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(systemName: "sun.max.fill")
+        view.image = image
+        view.tintColor = UIColor(red: 1.0, green: 0.83, blue: 0, alpha: 1.0)
         
         return view
     }()
@@ -48,11 +58,10 @@ open class SWColorPickerView: UIView {
     private let doneButton: UIButton = {
         let btn = UIButton(type: .roundedRect)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.tintColor = .darkGray
-        btn.backgroundColor = .darkGray
-        btn.setTitleColor(.white, for: .normal)
-        btn.setTitle("select", for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 20)
+        btn.layer.cornerRadius = 4
+        btn.setTitleColor(.darkGray, for: .normal)
+        btn.setTitle("OK", for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
         
         return btn
     }()
@@ -91,6 +100,7 @@ open class SWColorPickerView: UIView {
     private func addSubView() {
         self.addSubview(self.colorWheelView)
         self.addSubview(self.brightnessView)
+        self.addSubview(self.sunImageView)
         self.addSubview(self.selectedColorView)
         self.addSubview(self.colorLabel)
         self.addSubview(self.doneButton)
@@ -122,8 +132,15 @@ open class SWColorPickerView: UIView {
         ])
         
         NSLayoutConstraint.activate([
+            self.sunImageView.centerXAnchor.constraint(equalTo: self.brightnessView.centerXAnchor),
+            self.sunImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.06),
+            self.sunImageView.heightAnchor.constraint(equalTo: self.sunImageView.widthAnchor),
+            self.sunImageView.topAnchor.constraint(equalTo: self.brightnessView.bottomAnchor, constant: 6)
+        ])
+        
+        NSLayoutConstraint.activate([
             self.colorLabel.centerXAnchor.constraint(equalTo: self.colorWheelView.centerXAnchor),
-            self.colorLabel.topAnchor.constraint(equalTo: self.colorWheelView.bottomAnchor, constant:0),
+            self.colorLabel.topAnchor.constraint(equalTo: self.colorWheelView.bottomAnchor, constant: 14),
         ])
         
         NSLayoutConstraint.activate([
@@ -134,10 +151,10 @@ open class SWColorPickerView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            self.doneButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.doneButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.doneButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            self.doneButton.heightAnchor.constraint(equalToConstant: 50)
+            self.doneButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            self.doneButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            self.doneButton.heightAnchor.constraint(equalToConstant: 36),
+            self.doneButton.widthAnchor.constraint(equalToConstant: 60)
         ])
     }
     
