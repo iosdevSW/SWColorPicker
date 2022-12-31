@@ -1,6 +1,6 @@
 import UIKit
 
-public class ColorWheelView: UIView {
+class ColorWheelView: UIView {
     //MARK: - Properties
     private var length: CGFloat!
     private var point: CGPoint!
@@ -19,7 +19,7 @@ public class ColorWheelView: UIView {
     }()
     
     //MARK: - Init
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.addSublayer(colorWheelLayer)
         self.layer.addSublayer(pointerLayer)
@@ -29,7 +29,7 @@ public class ColorWheelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func layoutSubviews() {
+    override func layoutSubviews() {
         if colorWheelLayer.contents == nil {
             self.length = min(self.frame.width,self.frame.height) // 정사각형 이미지 길이 높이, 넓이 중 짧은면을 길이로 한다.
             colorWheelLayer.frame = CGRect(x: 0, y: 0, width: length, height: length)
@@ -38,7 +38,7 @@ public class ColorWheelView: UIView {
     }
     
     //MARK: - Touch Pointer
-    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         
         var tempPoint = touch.location(in: self)

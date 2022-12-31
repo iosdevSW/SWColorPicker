@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -67,7 +67,7 @@
 		A4357B44FD30159E50B71A1AB00C987F /* Pods-SWColorPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SWColorPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		AD2E0335F2D4BFD5B7F84DAF9B78A3B1 /* SWColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SWColorPicker.modulemap; sourceTree = "<group>"; };
 		B17DAA8BCBBF5D4970DA6ED1E83E1550 /* Pods-SWColorPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SWColorPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C05E731FAC9524FB982A65464C35EB0E /* Pods-SWColorPicker_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SWColorPicker_Example"; path = Pods_SWColorPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C05E731FAC9524FB982A65464C35EB0E /* Pods_SWColorPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWColorPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AB23AFF8C4BD07FC5BD8CE22C1CB41 /* Pods-SWColorPicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SWColorPicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		DB49DD792960A0BF00C2359E /* SWColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SWColorPickerView.swift; path = SWColorPicker/Classes/SWColorPickerView.swift; sourceTree = "<group>"; };
 		DB49DD7B2960A12F00C2359E /* ColorWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorWheelView.swift; path = SWColorPicker/Classes/ColorWheelView.swift; sourceTree = "<group>"; };
@@ -76,10 +76,10 @@
 		DB49DD812960A18800C2359E /* BrightnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrightnessView.swift; path = SWColorPicker/Classes/BrightnessView.swift; sourceTree = "<group>"; };
 		E4D4FE7445137899659410CA1BDC743E /* SWColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWColorPicker-prefix.pch"; sourceTree = "<group>"; };
 		ED29A3E984783B34B0DDA906B7EEE9E8 /* SWColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWColorPicker-umbrella.h"; sourceTree = "<group>"; };
-		EDE6C67F13B912C9EDD6E7546B7022B1 /* SWColorPicker */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SWColorPicker; path = SWColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDE6C67F13B912C9EDD6E7546B7022B1 /* SWColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SWColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBB85E890D728B8843DB2E2DE4E153A /* Pods-SWColorPicker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SWColorPicker_Example-frameworks.sh"; sourceTree = "<group>"; };
 		F1256F97ADDCDD9B888B1B32AEFA49E6 /* ColorModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorModel.swift; path = SWColorPicker/Classes/ColorModel.swift; sourceTree = "<group>"; };
-		F89F1179598C0836C22AAC26B4AE8E41 /* Pods-SWColorPicker_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SWColorPicker_Tests"; path = Pods_SWColorPicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F89F1179598C0836C22AAC26B4AE8E41 /* Pods_SWColorPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWColorPicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,9 +231,9 @@
 		D935FB36A36B8C5A5026C916D5C739A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C05E731FAC9524FB982A65464C35EB0E /* Pods-SWColorPicker_Example */,
-				F89F1179598C0836C22AAC26B4AE8E41 /* Pods-SWColorPicker_Tests */,
-				EDE6C67F13B912C9EDD6E7546B7022B1 /* SWColorPicker */,
+				C05E731FAC9524FB982A65464C35EB0E /* Pods_SWColorPicker_Example.framework */,
+				F89F1179598C0836C22AAC26B4AE8E41 /* Pods_SWColorPicker_Tests.framework */,
+				EDE6C67F13B912C9EDD6E7546B7022B1 /* SWColorPicker.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 			);
 			name = SWColorPicker;
 			productName = SWColorPicker;
-			productReference = EDE6C67F13B912C9EDD6E7546B7022B1 /* SWColorPicker */;
+			productReference = EDE6C67F13B912C9EDD6E7546B7022B1 /* SWColorPicker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		AAD4E1531CEEEC137497A75BC940C835 /* Pods-SWColorPicker_Example */ = {
@@ -302,7 +302,7 @@
 			);
 			name = "Pods-SWColorPicker_Example";
 			productName = Pods_SWColorPicker_Example;
-			productReference = C05E731FAC9524FB982A65464C35EB0E /* Pods-SWColorPicker_Example */;
+			productReference = C05E731FAC9524FB982A65464C35EB0E /* Pods_SWColorPicker_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F4CE777E9F4EC05048EEA89E567BC4D2 /* Pods-SWColorPicker_Tests */ = {
@@ -321,7 +321,7 @@
 			);
 			name = "Pods-SWColorPicker_Tests";
 			productName = Pods_SWColorPicker_Tests;
-			productReference = F89F1179598C0836C22AAC26B4AE8E41 /* Pods-SWColorPicker_Tests */;
+			productReference = F89F1179598C0836C22AAC26B4AE8E41 /* Pods_SWColorPicker_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -332,9 +332,14 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					884C1B5554D63F759B5A1AF2FFE1FA16 = {
+						LastSwiftMigration = "";
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -442,15 +447,19 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SWColorPicker/SWColorPicker-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SWColorPicker/SWColorPicker-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/SWColorPicker/SWColorPicker.modulemap";
 				PRODUCT_MODULE_NAME = SWColorPicker;
 				PRODUCT_NAME = SWColorPicker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -474,8 +483,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-SWColorPicker_Example/Pods-SWColorPicker_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SWColorPicker_Example/Pods-SWColorPicker_Example.modulemap";
 				OTHER_LDFLAGS = "";
@@ -508,15 +521,19 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SWColorPicker/SWColorPicker-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SWColorPicker/SWColorPicker-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/SWColorPicker/SWColorPicker.modulemap";
 				PRODUCT_MODULE_NAME = SWColorPicker;
 				PRODUCT_NAME = SWColorPicker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -573,12 +590,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -600,8 +618,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-SWColorPicker_Tests/Pods-SWColorPicker_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SWColorPicker_Tests/Pods-SWColorPicker_Tests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -633,8 +655,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-SWColorPicker_Tests/Pods-SWColorPicker_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SWColorPicker_Tests/Pods-SWColorPicker_Tests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -704,7 +730,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -733,8 +759,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-SWColorPicker_Example/Pods-SWColorPicker_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SWColorPicker_Example/Pods-SWColorPicker_Example.modulemap";
 				OTHER_LDFLAGS = "";
