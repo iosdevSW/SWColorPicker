@@ -17,4 +17,5 @@ protocol BrightnessViewDelegate: AnyObject {
 
 protocol SWColorPickerViewDelegate: AnyObject {
     func selectedColor(_ color: UIColor)
+    func cancel()
 }

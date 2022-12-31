@@ -61,7 +61,18 @@ open class SWColorPickerView: UIView {
         btn.layer.cornerRadius = 4
         btn.setTitleColor(.darkGray, for: .normal)
         btn.setTitle("OK", for: .normal)
-        btn.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
+        btn.titleLabel?.font = .systemFont(ofSize: 18, weight: .regular)
+        
+        return btn
+    }()
+    
+    private let cancelButton: UIButton = {
+        let btn = UIButton(type: .roundedRect)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.cornerRadius = 4
+        btn.setTitleColor(.darkGray, for: .normal)
+        btn.setTitle("CANCEL", for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 18, weight: .regular)
         
         return btn
     }()
@@ -96,6 +107,10 @@ open class SWColorPickerView: UIView {
         self.delegate?.selectedColor(self.selectedColor.uiColor)
     }
     
+    @objc private func didClickCancelBtn(_ button: UIButton) {
+        self.delegate?.cancel()
+    }
+    
     //MARK: - AddSubView
     private func addSubView() {
         self.addSubview(self.colorWheelView)
@@ -104,6 +119,7 @@ open class SWColorPickerView: UIView {
         self.addSubview(self.selectedColorView)
         self.addSubview(self.colorLabel)
         self.addSubview(self.doneButton)
+        self.addSubview(self.cancelButton)
     }
     
     //MARK: - Layout
@@ -156,11 +172,19 @@ open class SWColorPickerView: UIView {
             self.doneButton.heightAnchor.constraint(equalToConstant: 36),
             self.doneButton.widthAnchor.constraint(equalToConstant: 60)
         ])
+        
+        NSLayoutConstraint.activate([
+            self.cancelButton.trailingAnchor.constraint(equalTo: self.doneButton.leadingAnchor),
+            self.cancelButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            self.cancelButton.heightAnchor.constraint(equalToConstant: 36),
+            self.cancelButton.widthAnchor.constraint(equalToConstant: 70)
+        ])
     }
     
     //MARK: - AddTarget
     private func addTarget() {
         self.doneButton.addTarget(self, action: #selector(self.didClickDoneBtn(_:)), for: .touchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(self.didClickCancelBtn(_:)), for: .touchUpInside)
     }
 }
 

@@ -22,7 +22,7 @@ class ViewController: UIViewController {
             colorPicker.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             colorPicker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             colorPicker.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
-            colorPicker.heightAnchor.constraint(equalToConstant: 320),
+            colorPicker.heightAnchor.constraint(equalToConstant: 340),
         ])
     }
 
@@ -30,6 +30,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 
