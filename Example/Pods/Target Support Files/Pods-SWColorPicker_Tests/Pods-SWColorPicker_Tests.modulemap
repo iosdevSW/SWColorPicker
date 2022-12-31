@@ -1,0 +1,6 @@
+framework module Pods_SWColorPicker_Tests {
+  umbrella header "Pods-SWColorPicker_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

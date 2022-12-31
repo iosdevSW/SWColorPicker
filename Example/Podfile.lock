@@ -1,0 +1,16 @@
+PODS:
+  - SWColorPicker (0.1.0)
+
+DEPENDENCIES:
+  - SWColorPicker (from `../`)
+
+EXTERNAL SOURCES:
+  SWColorPicker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SWColorPicker: 35a8978f5c8f9aa98a576d159ad62e8aae150c09
+
+PODFILE CHECKSUM: 3313a5e9822dfd4fef03f4d26e74c84df473dc96
+
+COCOAPODS: 1.11.3
