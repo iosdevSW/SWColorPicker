@@ -47,7 +47,7 @@ func rgbToHSV(_ rgb: RGB) -> HSV {
         hue /= 6
     }
     let result = HSV(hue: hue, saturation: saturation, value: maxValue, alpha: rgb.alpha)
-    print(result)
+    
     
     return HSV(hue: hue, saturation: saturation, value: maxValue, alpha: rgb.alpha)
 }
