@@ -27,6 +27,12 @@
 		DBFC8AE329607CB600915F57 /* BrightnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC8AE129607CB600915F57 /* BrightnessView.swift */; };
 		DBFC8AE529607D0900915F57 /* SWColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC8AE429607D0900915F57 /* SWColorPickerView.swift */; };
 		DBFC8AE629607D0900915F57 /* SWColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC8AE429607D0900915F57 /* SWColorPickerView.swift */; };
+		DBFC8AE729607EF700915F57 /* BrightnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC8AE129607CB600915F57 /* BrightnessView.swift */; };
+		DBFC8AE829607EF900915F57 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1256F97ADDCDD9B888B1B32AEFA49E6 /* ColorWheelView.swift */; };
+		DBFC8AE929607EFC00915F57 /* SWColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC8AE429607D0900915F57 /* SWColorPickerView.swift */; };
+		DBFC8AEA29607F0100915F57 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC8ADE29607CAA00915F57 /* ColorModel.swift */; };
+		DBFC8AEB29607F0400915F57 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95AC232957FD5A001D1CE4 /* Utils.swift */; };
+		DBFC8AEC29607F0700915F57 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95AC43295ADB0B001D1CE4 /* Protocols.swift */; };
 		E764E61017434AB395E8B77FBA70B559 /* SWColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 191500B139B067272880BF63F1F69C0B /* SWColorPicker-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -153,10 +159,10 @@
 			children = (
 				DB95AC43295ADB0B001D1CE4 /* Protocols.swift */,
 				DB95AC232957FD5A001D1CE4 /* Utils.swift */,
-				DBFC8AE429607D0900915F57 /* SWColorPickerView.swift */,
 				DBFC8ADE29607CAA00915F57 /* ColorModel.swift */,
 				F1256F97ADDCDD9B888B1B32AEFA49E6 /* ColorWheelView.swift */,
 				DBFC8AE129607CB600915F57 /* BrightnessView.swift */,
+				DBFC8AE429607D0900915F57 /* SWColorPickerView.swift */,
 				B883310D898E4A4802961939A423EA70 /* Pod */,
 				55AC680C67B4BE89DB6265D887036964 /* Support Files */,
 			);
@@ -416,7 +422,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFC8AE929607EFC00915F57 /* SWColorPickerView.swift in Sources */,
+				DBFC8AE829607EF900915F57 /* ColorWheelView.swift in Sources */,
+				DBFC8AEC29607F0700915F57 /* Protocols.swift in Sources */,
 				854C43342E2899BC34E638651F9DA8BF /* Pods-SWColorPicker_Tests-dummy.m in Sources */,
+				DBFC8AE729607EF700915F57 /* BrightnessView.swift in Sources */,
+				DBFC8AEA29607F0100915F57 /* ColorModel.swift in Sources */,
+				DBFC8AEB29607F0400915F57 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

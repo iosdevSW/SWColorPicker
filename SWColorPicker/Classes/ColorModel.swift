@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RGB {
+public struct RGB {
     var red: CGFloat
     var green: CGFloat
     var blue: CGFloat
@@ -29,7 +29,7 @@ struct RGB {
     }
 }
 
-struct HSV {
+public struct HSV {
     var hue: CGFloat
     var saturation: CGFloat
     var value: CGFloat

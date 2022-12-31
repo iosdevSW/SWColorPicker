@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class SWColorPickerView: UIView {
+public class SWColorPickerView: UIView {
     //MARK: - Propertie
     private var selectedColor: HSV = .init(hue: 1, saturation: 0, value: 1, alpha: 1)
     
