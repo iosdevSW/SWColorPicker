@@ -7,8 +7,12 @@
 
 import Foundation
 
-protocol ColorWheelDelegate: AnyObject {
-    func selectedColor(_ color: RGB)
+protocol ColorWheelViewDelegate: AnyObject {
+    func selectedColor(_ color: HSV)
+}
+
+protocol BrightnessViewDelegate: AnyObject {
+    func changedBrightness(_ value: CGFloat)
 }
 
 protocol SWColorPickerViewDelegate: AnyObject {

@@ -1,12 +1,12 @@
 import UIKit
 
-public class ColorWheel: UIView {
+public class ColorWheelView: UIView {
     //MARK: - Properties
     private var length: CGFloat!
     private var point: CGPoint!
     private var pointerRadius: CGFloat = 12
     
-    weak var delegate: ColorWheelDelegate?
+    weak var delegate: ColorWheelViewDelegate?
     
     private let colorWheelLayer = CALayer()
     
@@ -44,14 +44,13 @@ public class ColorWheel: UIView {
         var tempPoint = touch.location(in: self)
         var hsv = self.getHSVAtPoint(tempPoint)
         
-        if hsv.saturation > 1 {
+        if hsv.saturation > 0.99 {
             tempPoint = self.getPointAtHSV(hsv)
             hsv = self.getHSVAtPoint(tempPoint)
         }
         self.point = tempPoint
-        let rgb = hsvToRGB(hsv)
-        delegate?.selectedColor(rgb)
-        pointerLayer.fillColor = rgb.cgColor
+        delegate?.selectedColor(hsv)
+        pointerLayer.fillColor = hsv.cgColor
         
         drawPointerLayer()
     }
@@ -111,7 +110,7 @@ public class ColorWheel: UIView {
         let center = length / 2 // 반지름이자. 중앙 x,y좌표
         let nx = (center - point.x) / center // 0~1.0값으로 표현하기 위해 반지름으로 다시 나누어준다.
         let ny = (center - point.y) / center
-        let saturation = sqrt(CGFloat(nx*nx + ny*ny)) // 피타고라스 정리 s구하기
+        var saturation = sqrt(CGFloat(nx*nx + ny*ny)) // 피타고라스 정리 s구하기
         var hue: CGFloat = saturation == 0 ? 0 : acos(nx/saturation) / CGFloat.pi / 2.0
         if ny < 0 { hue = 1.0 - hue }
         

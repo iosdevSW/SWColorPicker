@@ -32,7 +32,8 @@ func rgbToHSV(_ rgb: RGB) -> HSV {
     let maxValue: CGFloat = max(rgb.red, rgb.green, rgb.blue)
     let minValue: CGFloat = min(rgb.red, rgb.green, rgb.blue)
     let delta = maxValue - minValue
-    let saturation: CGFloat = maxValue == 0 ? 0 : delta / minValue
+ 
+    let saturation: CGFloat = maxValue == 0 ? 0 : delta / maxValue
     var hue: CGFloat = 0
     
     if delta == 0 {
@@ -45,6 +46,8 @@ func rgbToHSV(_ rgb: RGB) -> HSV {
         }
         hue /= 6
     }
+    let result = HSV(hue: hue, saturation: saturation, value: maxValue, alpha: rgb.alpha)
+    print(result)
     
     return HSV(hue: hue, saturation: saturation, value: maxValue, alpha: rgb.alpha)
 }

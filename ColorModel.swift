@@ -20,6 +20,13 @@ struct RGB {
     var cgColor: CGColor {
         return uiColor.cgColor
     }
+    
+    init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        self.red = red
+        self.green = green
+        self.blue = blue
+        self.alpha = alpha
+    }
 }
 
 struct HSV {
@@ -27,4 +34,12 @@ struct HSV {
     var saturation: CGFloat
     var value: CGFloat
     var alpha: CGFloat
+    
+    var uiColor: UIColor {
+        return UIColor(hue: self.hue, saturation: self.saturation, brightness: self.value, alpha: self.alpha)
+    }
+    
+    var cgColor: CGColor {
+        return self.uiColor.cgColor
+    }
 }

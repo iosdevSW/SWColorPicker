@@ -9,10 +9,19 @@ import UIKit
 
 public class BrightnessView: UIView {
     //MARK: - Properties
-    private var barLayer: CAGradientLayer = {
+    weak var delegate: BrightnessViewDelegate?
+    
+    var selectedColor: HSV {
+        didSet {
+            self.selectedColor.value = 1
+            self.barLayer.colors = [self.selectedColor.cgColor, UIColor.black.cgColor]
+        }
+    }
+    
+    private lazy var barLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
-        layer.colors = [UIColor.red.cgColor,
-                        UIColor.blue.cgColor]
+        layer.colors = [self.selectedColor.cgColor,
+                        UIColor.black.cgColor]
         layer.locations = [0.0,1.0]
         layer.cornerRadius = 10
         layer.startPoint = .init(x: 0.0, y: 0.0)
@@ -23,18 +32,15 @@ public class BrightnessView: UIView {
     
     private let pointLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.backgroundColor = UIColor.lightGray.cgColor
+        layer.fillColor = UIColor.lightGray.cgColor
         
         return layer
     }()
     
     //MARK: - Init
-    public override init(frame: CGRect) {
+    init(frame: CGRect, color: HSV) {
+        self.selectedColor = color
         super.init(frame: frame)
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGray.cgColor
-        
         self.layer.addSublayer(barLayer)
         self.layer.addSublayer(pointLayer)
     }
@@ -45,14 +51,28 @@ public class BrightnessView: UIView {
     
     public override func draw(_ rect: CGRect) {
         self.barLayer.frame = rect
-        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: 0, width: self.frame.width, height: 20), cornerRadius: 4).cgPath
+        self.resetPointLayer()
     }
     
     public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let point = touch.location(in: self)
-        print(point)
-        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: point.y, width: self.frame.width, height: 20), cornerRadius: 4).cgPath
+        var newY = 0.0
+        
+        if point.y > self.frame.height-10 {
+            newY = self.frame.height-10
+        } else if point.y <= 0 {
+            newY = 0
+        } else {
+            newY = point.y
+        }
+        let value = (self.frame.height-10.0 - newY) / (self.frame.height-10.0)
+        delegate?.changedBrightness(value)
+        
+        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: newY, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
     }
     
+    func resetPointLayer() {
+        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: 0, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
+    }
 }
