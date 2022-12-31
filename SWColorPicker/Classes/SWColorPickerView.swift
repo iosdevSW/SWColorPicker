@@ -85,7 +85,7 @@ public class SWColorPickerView: UIView {
         
         self.backgroundColor = .white
         
-        colorWheelView.delegate = self
+//        colorWheelView.delegate = self
         brightnessView.delegate = self
     }
     

@@ -6,7 +6,7 @@ class ColorWheelView: UIView {
     private var point: CGPoint!
     private var pointerRadius: CGFloat = 12
     
-    weak var delegate: ColorWheelViewDelegate?
+//    weak var delegate: ColorWheelViewDelegate?
     
     private let colorWheelLayer = CALayer()
     
@@ -49,7 +49,7 @@ class ColorWheelView: UIView {
             hsv = self.getHSVAtPoint(tempPoint)
         }
         self.point = tempPoint
-        delegate?.selectedColor(hsv)
+//        delegate?.selectedColor(hsv)
         pointerLayer.fillColor = hsv.cgColor
         
         drawPointerLayer()

@@ -5,7 +5,7 @@
 //  Created by SangWoo's MacBook on 2022/12/27.
 //
 
-import Foundation
+import UIKit
 
 public struct RGB {
     var red: CGFloat
