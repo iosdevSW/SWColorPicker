@@ -5,11 +5,15 @@
 [![License](https://img.shields.io/cocoapods/l/SWColorPicker.svg?style=flat)](https://cocoapods.org/pods/SWColorPicker)
 [![Platform](https://img.shields.io/cocoapods/p/SWColorPicker.svg?style=flat)](https://cocoapods.org/pods/SWColorPicker)
 
-## Example
+This library is a Custom HSV Color Picker.<br>
+Create a SWColorPickerView instance and adopt SWColorPickerViewDelegate.<br>
+Please define the delegate of SWColorPickverView.<br>
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+<img src = "https://user-images.githubusercontent.com/61108853/210138206-be216c44-70c6-4572-afa2-8d989c874c84.jpg" width ="400">
+
 
 ## Requirements
+- ios 13.0 and later
 
 ## Installation
 

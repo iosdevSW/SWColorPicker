@@ -1,12 +1,12 @@
 import UIKit
 
-class ColorWheelView: UIView {
+public class ColorWheelView: UIView {
     //MARK: - Properties
     private var length: CGFloat!
     private var point: CGPoint!
     private var pointerRadius: CGFloat = 12
     
-//    weak var delegate: ColorWheelViewDelegate?
+    weak var delegate: ColorWheelViewDelegate?
     
     private let colorWheelLayer = CALayer()
     
@@ -19,7 +19,7 @@ class ColorWheelView: UIView {
     }()
     
     //MARK: - Init
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.addSublayer(colorWheelLayer)
         self.layer.addSublayer(pointerLayer)
@@ -29,7 +29,7 @@ class ColorWheelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         if colorWheelLayer.contents == nil {
             self.length = min(self.frame.width,self.frame.height) // 정사각형 이미지 길이 높이, 넓이 중 짧은면을 길이로 한다.
             colorWheelLayer.frame = CGRect(x: 0, y: 0, width: length, height: length)
@@ -38,7 +38,7 @@ class ColorWheelView: UIView {
     }
     
     //MARK: - Touch Pointer
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         
         var tempPoint = touch.location(in: self)
@@ -110,7 +110,7 @@ class ColorWheelView: UIView {
         let center = length / 2 // 반지름이자. 중앙 x,y좌표
         let nx = (center - point.x) / center // 0~1.0값으로 표현하기 위해 반지름으로 다시 나누어준다.
         let ny = (center - point.y) / center
-        var saturation = sqrt(CGFloat(nx*nx + ny*ny)) // 피타고라스 정리 s구하기
+        let saturation = sqrt(CGFloat(nx*nx + ny*ny)) // 피타고라스 정리 s구하기
         var hue: CGFloat = saturation == 0 ? 0 : acos(nx/saturation) / CGFloat.pi / 2.0
         if ny < 0 { hue = 1.0 - hue }
         
