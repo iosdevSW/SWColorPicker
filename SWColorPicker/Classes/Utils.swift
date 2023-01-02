@@ -49,3 +49,13 @@ public func rgbToHSV(_ rgb: RGB) -> HSV {
 
     return HSV(hue: hue, saturation: saturation, value: maxValue, alpha: rgb.alpha)
 }
+
+public func hsvToHex(_ hsv: HSV) -> String {
+    let rgb = hsvToRGB(hsv)
+    
+    let r = String(Int(rgb.red * 255), radix: 16)
+    let g = String(Int(rgb.green * 255), radix: 16)
+    let b = String(Int(rgb.blue * 255), radix: 16)
+    
+    return "#\(r)\(g)\(b)".uppercased()
+}

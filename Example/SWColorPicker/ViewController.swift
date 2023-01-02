@@ -10,7 +10,6 @@ import UIKit
 import SWColorPicker
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
@@ -22,7 +21,8 @@ class ViewController: UIViewController {
             colorPicker.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             colorPicker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             colorPicker.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
-            colorPicker.heightAnchor.constraint(equalToConstant: 340),
+            colorPicker.heightAnchor.constraint(equalToConstant: 400),
+            colorPicker.topAnchor.constraint(equalTo: self.view.topAnchor)
         ])
     }
 
@@ -30,6 +30,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 

@@ -124,21 +124,12 @@ public class SWColorPickerView: UIView {
     
     //MARK: - Layout
     private func layout() {
-        if self.frame.width > self.frame.height {
-            NSLayoutConstraint.activate([
-                self.colorWheelView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-                self.colorWheelView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6),
-                self.colorWheelView.widthAnchor.constraint(equalTo: self.colorWheelView.heightAnchor),
-                self.colorWheelView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -40),
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                self.colorWheelView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-                self.colorWheelView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
-                self.colorWheelView.heightAnchor.constraint(equalTo: self.colorWheelView.widthAnchor),
-                self.colorWheelView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -40),
-            ])
-        }
+        NSLayoutConstraint.activate([
+            self.colorWheelView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            self.colorWheelView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
+            self.colorWheelView.heightAnchor.constraint(equalTo: self.colorWheelView.widthAnchor),
+            self.colorWheelView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -40),
+        ])
         
         NSLayoutConstraint.activate([
             self.brightnessView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
@@ -194,6 +185,7 @@ extension SWColorPickerView: ColorWheelViewDelegate {
         self.selectedColorView.backgroundColor = color.uiColor
         self.brightnessView.resetPointLayer()
         self.brightnessView.selectedColor = color
+        self.colorLabel.text = hsvToHex(color)
     }
 }
 
@@ -201,5 +193,6 @@ extension SWColorPickerView: BrightnessViewDelegate {
     public func changedBrightness(_ value: CGFloat) {
         self.selectedColor.value = value
         self.selectedColorView.backgroundColor = self.selectedColor.uiColor
+        self.colorLabel.text = hsvToHex(self.selectedColor)
     }
 }
