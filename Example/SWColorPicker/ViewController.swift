@@ -14,16 +14,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
         
-        let colorPicker = SWColorPickerView()
-        self.view.addSubview(colorPicker)
-        colorPicker.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            colorPicker.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            colorPicker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            colorPicker.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
-            colorPicker.heightAnchor.constraint(equalToConstant: 400),
-            colorPicker.topAnchor.constraint(equalTo: self.view.topAnchor)
-        ])
+//        let colorPicker = SWColorPickerView()
+//        self.view.addSubview(colorPicker)
+//        colorPicker.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            colorPicker.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+//            colorPicker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+//            colorPicker.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
+//            colorPicker.heightAnchor.constraint(equalToConstant: 400),
+//            colorPicker.topAnchor.constraint(equalTo: self.view.topAnchor)
+//        ])
+//
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let colorPickerVC = SWColorPickerViewController()
+        self.present(colorPickerVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
