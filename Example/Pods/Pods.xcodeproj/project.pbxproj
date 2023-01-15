@@ -16,6 +16,7 @@
 		4A5AE8C1DA0BE16F9DCC75B40F5918F9 /* Pods-SWColorPicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AC40219CD207E0FD66C84F4F098A331 /* Pods-SWColorPicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4E8D73A2D93793D883890BFFFFCD7A9E /* SWColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ED29A3E984783B34B0DDA906B7EEE9E8 /* SWColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		854C43342E2899BC34E638651F9DA8BF /* Pods-SWColorPicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AACA281F713A79C3EBCDD0E4B276BDD /* Pods-SWColorPicker_Tests-dummy.m */; };
+		DB2EDCBB2972CF30002B9BB2 /* SWColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2EDCBA2972CF30002B9BB2 /* SWColorPickerViewController.swift */; };
 		DB49DD7A2960A0BF00C2359E /* SWColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49DD792960A0BF00C2359E /* SWColorPickerView.swift */; };
 		DB49DD7C2960A12F00C2359E /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49DD7B2960A12F00C2359E /* ColorWheelView.swift */; };
 		DB49DD7E2960A14A00C2359E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49DD7D2960A14A00C2359E /* Protocols.swift */; };
@@ -69,6 +70,7 @@
 		B17DAA8BCBBF5D4970DA6ED1E83E1550 /* Pods-SWColorPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SWColorPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C05E731FAC9524FB982A65464C35EB0E /* Pods_SWColorPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWColorPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AB23AFF8C4BD07FC5BD8CE22C1CB41 /* Pods-SWColorPicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SWColorPicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		DB2EDCBA2972CF30002B9BB2 /* SWColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWColorPickerViewController.swift; sourceTree = "<group>"; };
 		DB49DD792960A0BF00C2359E /* SWColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SWColorPickerView.swift; path = SWColorPicker/Classes/SWColorPickerView.swift; sourceTree = "<group>"; };
 		DB49DD7B2960A12F00C2359E /* ColorWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorWheelView.swift; path = SWColorPicker/Classes/ColorWheelView.swift; sourceTree = "<group>"; };
 		DB49DD7D2960A14A00C2359E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = SWColorPicker/Classes/Protocols.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				DB49DD7D2960A14A00C2359E /* Protocols.swift */,
 				DB49DD7F2960A16300C2359E /* Utils.swift */,
 				F1256F97ADDCDD9B888B1B32AEFA49E6 /* ColorModel.swift */,
+				DB2EDCBA2972CF30002B9BB2 /* SWColorPickerViewController.swift */,
 				DB49DD792960A0BF00C2359E /* SWColorPickerView.swift */,
 				DB49DD7B2960A12F00C2359E /* ColorWheelView.swift */,
 				DB49DD812960A18800C2359E /* BrightnessView.swift */,
@@ -393,6 +396,7 @@
 				146667125D031D5BCCE5F2A7D9DABCFB /* ColorModel.swift in Sources */,
 				DB49DD7C2960A12F00C2359E /* ColorWheelView.swift in Sources */,
 				E764E61017434AB395E8B77FBA70B559 /* SWColorPicker-dummy.m in Sources */,
+				DB2EDCBB2972CF30002B9BB2 /* SWColorPickerViewController.swift in Sources */,
 				DB49DD802960A16300C2359E /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

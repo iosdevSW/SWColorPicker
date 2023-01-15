@@ -23,6 +23,8 @@ public class ColorWheelView: UIView {
         super.init(frame: frame)
         self.layer.addSublayer(colorWheelLayer)
         self.layer.addSublayer(pointerLayer)
+        
+        self.configureGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -31,28 +33,12 @@ public class ColorWheelView: UIView {
     
     public override func layoutSubviews() {
         if colorWheelLayer.contents == nil {
-            self.length = min(self.frame.width,self.frame.height) // 정사각형 이미지 길이 높이, 넓이 중 짧은면을 길이로 한다.
+            self.length = floor(min(self.frame.width,self.frame.height))
+            // 정사각형 이미지 길이 높이, 넓이 중 짧은면을 길이로 한다.
+            
             colorWheelLayer.frame = CGRect(x: 0, y: 0, width: length, height: length)
             colorWheelLayer.contents = createColorWheelImage(self.frame.size)
         }
-    }
-    
-    //MARK: - Touch Pointer
-    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        
-        var tempPoint = touch.location(in: self)
-        var hsv = self.getHSVAtPoint(tempPoint)
-        
-        if hsv.saturation > 0.99 {
-            tempPoint = self.getPointAtHSV(hsv)
-            hsv = self.getHSVAtPoint(tempPoint)
-        }
-        self.point = tempPoint
-        delegate?.selectedColor(hsv)
-        pointerLayer.fillColor = hsv.cgColor
-
-        drawPointerLayer()
     }
     
     private func drawPointerLayer() {
@@ -124,5 +110,32 @@ public class ColorWheelView: UIView {
         let y = center + center * -sin(hsv.hue * CGFloat.pi * 2) // 삼각비 이용
         
         return CGPoint(x: x, y: y)
+    }
+    
+    private func configureGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.respondToGesture(_:)))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.respondToGesture(_:)))
+        
+        tapGesture.cancelsTouchesInView = true
+        panGesture.cancelsTouchesInView = true
+    
+        self.addGestureRecognizer(tapGesture)
+        self.addGestureRecognizer(panGesture)
+    }
+    
+    //MARK: - Selector
+    @objc private func respondToGesture(_ gesture: UIPanGestureRecognizer) {
+        var tempPoint = gesture.location(in: self)
+        var hsv = self.getHSVAtPoint(tempPoint)
+        
+        if hsv.saturation > 0.99 {
+            tempPoint = self.getPointAtHSV(hsv)
+            hsv = self.getHSVAtPoint(tempPoint)
+        }
+        self.point = tempPoint
+        delegate?.selectedColor(hsv)
+        pointerLayer.fillColor = hsv.cgColor
+
+        drawPointerLayer()
     }
 }
