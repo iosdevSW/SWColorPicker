@@ -43,20 +43,36 @@ public class BrightnessView: UIView {
         super.init(frame: frame)
         self.layer.addSublayer(barLayer)
         self.layer.addSublayer(pointLayer)
+        self.configureGesture()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+     
     public override func draw(_ rect: CGRect) {
         self.barLayer.frame = rect
         self.resetPointLayer()
     }
     
-    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let point = touch.location(in: self)
+    private func configureGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.respondToGesture(_:)))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.respondToGesture(_:)))
+        
+        tapGesture.cancelsTouchesInView = true
+        panGesture.cancelsTouchesInView = true
+    
+        self.addGestureRecognizer(tapGesture)
+        self.addGestureRecognizer(panGesture)
+    }
+    
+    func resetPointLayer() {
+        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: 0, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
+    }
+    
+    //MARK: - Selector
+    @objc private func respondToGesture(_ gesture: UIPanGestureRecognizer) {
+        let point = gesture.location(in: self)
         var newY = 0.0
         
         if point.y > self.frame.height-10 {
@@ -70,9 +86,5 @@ public class BrightnessView: UIView {
         delegate?.changedBrightness(value)
         
         self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: newY, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
-    }
-    
-    func resetPointLayer() {
-        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: 0, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
     }
 }

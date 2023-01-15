@@ -38,8 +38,11 @@ final public class SWColorPickerViewController: UIViewController {
     private let selectedColorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 6
-        
+        view.layer.cornerRadius = 10
+        view.layer.shadowRadius = 1
+        view.layer.shadowOpacity = 1.0
+        view.layer.shadowOffset = .zero
+       
         return view
     }()
     
@@ -55,7 +58,7 @@ final public class SWColorPickerViewController: UIViewController {
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
-        self.modalPresentationStyle = .fullScreen
+        self.modalPresentationStyle = .popover
     }
     
     required init?(coder: NSCoder) {
@@ -68,7 +71,6 @@ final public class SWColorPickerViewController: UIViewController {
         self.addSubView()
         self.layout()
         self.view.backgroundColor = .white
-        
         
         self.colorWheelView.delegate = self
         self.brightnessView.delegate = self
@@ -87,15 +89,15 @@ final public class SWColorPickerViewController: UIViewController {
     private func layout() {
         NSLayoutConstraint.activate([
             self.colorWheelView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            self.colorWheelView.widthAnchor.constraint(equalToConstant: self.view.frame.width*0.6),
+            self.colorWheelView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.76),
             self.colorWheelView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 40),
-            self.colorWheelView.heightAnchor.constraint(equalToConstant: self.view.frame.width*0.6)
+            self.colorWheelView.heightAnchor.constraint(equalTo: self.colorWheelView.widthAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            self.brightnessView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
+            self.brightnessView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             self.brightnessView.topAnchor.constraint(equalTo: self.colorWheelView.topAnchor, constant: 20),
-            self.brightnessView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.1),
+            self.brightnessView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.065),
             self.brightnessView.heightAnchor.constraint(equalTo: self.colorWheelView.heightAnchor, multiplier: 0.8)
         ])
         
@@ -107,15 +109,15 @@ final public class SWColorPickerViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            self.colorLabel.centerXAnchor.constraint(equalTo: self.colorWheelView.centerXAnchor),
-            self.colorLabel.topAnchor.constraint(equalTo: self.colorWheelView.bottomAnchor, constant: 14),
+            self.colorLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.colorLabel.topAnchor.constraint(equalTo: self.colorWheelView.bottomAnchor, constant: 40),
         ])
         
         NSLayoutConstraint.activate([
             self.selectedColorView.topAnchor.constraint(equalTo: self.colorLabel.bottomAnchor, constant: 4),
-            self.selectedColorView.centerXAnchor.constraint(equalTo: self.colorLabel.centerXAnchor),
+            self.selectedColorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.selectedColorView.widthAnchor.constraint(equalTo: self.colorWheelView.widthAnchor, multiplier: 0.4),
-            self.selectedColorView.heightAnchor.constraint(equalToConstant: 36)
+            self.selectedColorView.heightAnchor.constraint(equalTo: self.colorWheelView.widthAnchor, multiplier: 0.4)
         ])
     }
 }
