@@ -8,14 +8,19 @@
 import Foundation
 
 public protocol ColorWheelViewDelegate: AnyObject {
-    func selectedColor(_ color: HSV)
+    func didSelectColor(_ color: HSV)
 }
 
 public protocol BrightnessViewDelegate: AnyObject {
-    func changedBrightness(_ value: CGFloat)
+    func didChangeBrightness(_ value: CGFloat)
 }
 
 public protocol SWColorPickerViewDelegate: AnyObject {
-    func selectedColor(_ color: UIColor)
+    func didSelectColor(_ color: UIColor)
     func cancel()
+}
+
+//MARK: - Optional
+public extension SWColorPickerViewDelegate {
+    func cancel() { }
 }

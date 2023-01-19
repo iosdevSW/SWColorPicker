@@ -104,7 +104,7 @@ public class SWColorPickerView: UIView {
     
     //MARK: - Selector
     @objc private func didClickDoneBtn(_ button: UIButton) {
-        self.delegate?.selectedColor(self.selectedColor.uiColor)
+        self.delegate?.didSelectColor(self.selectedColor.uiColor)
     }
     
     @objc private func didClickCancelBtn(_ button: UIButton) {
@@ -180,7 +180,7 @@ public class SWColorPickerView: UIView {
 }
 
 extension SWColorPickerView: ColorWheelViewDelegate {
-    public func selectedColor(_ color: HSV) {
+    public func didSelectColor(_ color: HSV) {
         self.selectedColor = color
         self.selectedColorView.backgroundColor = color.uiColor
         self.brightnessView.resetPointLayer()
@@ -190,7 +190,7 @@ extension SWColorPickerView: ColorWheelViewDelegate {
 }
 
 extension SWColorPickerView: BrightnessViewDelegate {
-    public func changedBrightness(_ value: CGFloat) {
+    public func didChangeBrightness(_ value: CGFloat) {
         self.selectedColor.value = value
         self.selectedColorView.backgroundColor = self.selectedColor.uiColor
         self.colorLabel.text = hsvToHex(self.selectedColor)

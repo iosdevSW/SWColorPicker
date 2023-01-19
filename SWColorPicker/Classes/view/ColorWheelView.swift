@@ -133,7 +133,7 @@ public class ColorWheelView: UIView {
             hsv = self.getHSVAtPoint(tempPoint)
         }
         self.point = tempPoint
-        delegate?.selectedColor(hsv)
+        delegate?.didSelectColor(hsv)
         pointerLayer.fillColor = hsv.cgColor
 
         drawPointerLayer()

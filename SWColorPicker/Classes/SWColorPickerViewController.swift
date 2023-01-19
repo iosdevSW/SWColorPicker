@@ -9,7 +9,13 @@ import UIKit
 
 final public class SWColorPickerViewController: UIViewController {
     //MARK: - Properties
-    private var selectedColor: HSV = .init(hue: 1, saturation: 0, value: 1, alpha: 1)
+    public weak var delegate: SWColorPickerViewDelegate?
+    
+    private var selectedColor: HSV = .init(hue: 1, saturation: 0, value: 1, alpha: 1) {
+        didSet {
+            delegate?.didSelectColor(self.selectedColor.uiColor)
+        }
+    }
     
     private let colorWheelView: ColorWheelView = {
         let view = ColorWheelView()
@@ -56,6 +62,30 @@ final public class SWColorPickerViewController: UIViewController {
         return view
     }()
     
+    private let redComponentView: ComponentView = {
+        let view = ComponentView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.componentLabel.text = "R"
+        
+        return view
+    }()
+    
+    private let greenComponentView: ComponentView = {
+        let view = ComponentView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.componentLabel.text = "G"
+        
+        return view
+    }()
+    
+    private let blueComponentView: ComponentView = {
+        let view = ComponentView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.componentLabel.text = "B"
+        
+        return view
+    }()
+    
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .popover
@@ -83,6 +113,9 @@ final public class SWColorPickerViewController: UIViewController {
         self.view.addSubview(self.brightnessView)
         self.view.addSubview(self.sunImageView)
         self.view.addSubview(self.selectedColorView)
+        self.view.addSubview(self.redComponentView)
+        self.view.addSubview(self.greenComponentView)
+        self.view.addSubview(self.blueComponentView)
     }
     
     //MARK: - Layout
@@ -109,8 +142,29 @@ final public class SWColorPickerViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
+            self.redComponentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.redComponentView.topAnchor.constraint(equalTo: self.colorWheelView.bottomAnchor, constant: 40),
+            self.redComponentView.widthAnchor.constraint(equalToConstant: 120),
+            self.redComponentView.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.greenComponentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.greenComponentView.topAnchor.constraint(equalTo: self.redComponentView.bottomAnchor, constant: 10),
+            self.greenComponentView.widthAnchor.constraint(equalToConstant: 120),
+            self.greenComponentView.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.blueComponentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.blueComponentView.topAnchor.constraint(equalTo: self.greenComponentView.bottomAnchor, constant: 10),
+            self.blueComponentView.widthAnchor.constraint(equalToConstant: 120),
+            self.blueComponentView.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
             self.colorLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.colorLabel.topAnchor.constraint(equalTo: self.colorWheelView.bottomAnchor, constant: 40),
+            self.colorLabel.topAnchor.constraint(equalTo: self.blueComponentView.bottomAnchor, constant: 40),
         ])
         
         NSLayoutConstraint.activate([
@@ -119,19 +173,25 @@ final public class SWColorPickerViewController: UIViewController {
             self.selectedColorView.widthAnchor.constraint(equalTo: self.colorWheelView.widthAnchor, multiplier: 0.4),
             self.selectedColorView.heightAnchor.constraint(equalTo: self.colorWheelView.widthAnchor, multiplier: 0.4)
         ])
+        
     }
 }
 
 extension SWColorPickerViewController: ColorWheelViewDelegate, BrightnessViewDelegate {
-    public func selectedColor(_ color: HSV) {
+    public func didSelectColor(_ color: HSV) {
         self.selectedColor = color
         self.colorLabel.text = hsvToHex(color)
         self.brightnessView.resetPointLayer()
         self.brightnessView.selectedColor = color
         self.selectedColorView.backgroundColor = color.uiColor
+        let rgb = hsvToRGB(color)
+        redComponentView.inputTextField.text = "\(rgb.red*255)"
+        greenComponentView.inputTextField.text = "\(rgb.green*255)"
+        blueComponentView.inputTextField.text = "\(rgb.blue*255)"
+        
     }
     
-    public func changedBrightness(_ value: CGFloat) {
+    public func didChangeBrightness(_ value: CGFloat) {
         self.selectedColor.value = value
         self.selectedColorView.backgroundColor = self.selectedColor.uiColor
         self.colorLabel.text = hsvToHex(self.selectedColor)

@@ -83,7 +83,7 @@ public class BrightnessView: UIView {
             newY = point.y
         }
         let value = (self.frame.height-10.0 - newY) / (self.frame.height-10.0)
-        delegate?.changedBrightness(value)
+        delegate?.didChangeBrightness(value)
         
         self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: newY, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
     }
