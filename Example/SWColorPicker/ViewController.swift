@@ -10,32 +10,40 @@ import UIKit
 import SWColorPicker
 
 class ViewController: UIViewController {
+    let selectView = UIView()
+    let colorPickerVC = SWColorPickerViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
+        selectView.translatesAutoresizingMaskIntoConstraints = false
+        selectView.layer.cornerRadius = 8
+        self.view.addSubview(self.selectView)
         
-//        let colorPicker = SWColorPickerView()
-//        self.view.addSubview(colorPicker)
-//        colorPicker.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            colorPicker.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-//            colorPicker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-//            colorPicker.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
-//            colorPicker.heightAnchor.constraint(equalToConstant: 400),
-//            colorPicker.topAnchor.constraint(equalTo: self.view.topAnchor)
-//        ])
-//
+        NSLayoutConstraint.activate([
+            selectView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            selectView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            selectView.widthAnchor.constraint(equalToConstant: 40),
+            selectView.heightAnchor.constraint(equalToConstant: 40),
+        ])
+        
+        colorPickerVC.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let colorPickerVC = SWColorPickerViewController()
         self.present(colorPickerVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+extension ViewController: SWColorPickerViewDelegate {
+    func didSelectColor(_ color: UIColor) {
+        self.selectView.backgroundColor = color
     }
 }
 
