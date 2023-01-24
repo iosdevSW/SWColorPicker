@@ -55,6 +55,14 @@ public class BrightnessView: UIView {
         self.resetPointLayer()
     }
     
+    //MARK: - Method
+    func moveToPointer(_ hsv: HSV) {
+        let newY = (self.frame.height-10) * hsv.value
+        let value = (self.frame.height-10.0 - newY)
+//        print(value)
+        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: value, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
+    }
+    
     private func configureGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.respondToGesture(_:)))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.respondToGesture(_:)))

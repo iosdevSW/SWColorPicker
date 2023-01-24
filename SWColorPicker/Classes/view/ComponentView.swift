@@ -11,23 +11,19 @@ final class ComponentView: UIView {
     let componentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 20)
+        label.textColor = .darkGray
+        label.backgroundColor = .systemGray6.withAlphaComponent(0.1)
+        label.font = .systemFont(ofSize: 18)
         label.textAlignment = .center
         
         return label
     }()
     
-    let inputTextField: UITextField = {
-        let tf = UITextField()
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.borderStyle = .roundedRect
-        tf.layer.borderWidth = 0.8
-        tf.layer.cornerRadius = 8
-        tf.backgroundColor = .white
-        tf.textColor = .black
+    let colorSlider: ThickTrackSlider = {
+        let slider = ThickTrackSlider()
+        slider.translatesAutoresizingMaskIntoConstraints = false
         
-        return tf
+        return slider
     }()
     
     override init(frame: CGRect) {
@@ -43,21 +39,22 @@ final class ComponentView: UIView {
     //MARK: - AddSubView
     private func addSubView() {
         self.addSubview(self.componentLabel)
-        self.addSubview(self.inputTextField)
+        self.addSubview(self.colorSlider)
     }
     
     //MARK: - Layout
     private func layout() {
         NSLayoutConstraint.activate([
-            self.componentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.componentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.componentLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.componentLabel.widthAnchor.constraint(equalToConstant: 30)
+            self.componentLabel.widthAnchor.constraint(equalToConstant: 46)
         ])
         
         NSLayoutConstraint.activate([
-            self.inputTextField.leadingAnchor.constraint(equalTo: self.componentLabel.trailingAnchor, constant: 10),
-            self.inputTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.inputTextField.centerYAnchor.constraint(equalTo: self.componentLabel.centerYAnchor)
+            self.colorSlider.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.colorSlider.trailingAnchor.constraint(equalTo: self.componentLabel.leadingAnchor, constant: -10),
+            self.colorSlider.centerYAnchor.constraint(equalTo: self.componentLabel.centerYAnchor),
+//            self.colorSlider.widthAnchor.constraint(equalToConstant: 30)
         ])
     }
 }

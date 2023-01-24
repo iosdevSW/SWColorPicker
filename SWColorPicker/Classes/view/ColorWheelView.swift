@@ -106,10 +106,18 @@ public class ColorWheelView: UIView {
     private func getPointAtHSV(_ hsv: HSV) -> CGPoint {
         let center = length / 2
 
-        let x = center + center * -cos(hsv.hue * CGFloat.pi * 2) // 삼각비 이용
-        let y = center + center * -sin(hsv.hue * CGFloat.pi * 2) // 삼각비 이용
-        
+        let x = center + (hsv.saturation*center) * -cos(hsv.hue * CGFloat.pi * 2) // 삼각비 이용
+        let y = center + (hsv.saturation*center) * -sin(hsv.hue * CGFloat.pi * 2) // 삼각비 이용
+
         return CGPoint(x: x, y: y)
+    }
+    
+    func moveToPointer(_ hsv: HSV) {
+        var hsv = hsv
+        self.point = getPointAtHSV(hsv)
+        hsv.value = 1.0
+        pointerLayer.fillColor = hsv.cgColor
+        self.drawPointerLayer()
     }
     
     private func configureGesture() {
@@ -129,13 +137,14 @@ public class ColorWheelView: UIView {
         var hsv = self.getHSVAtPoint(tempPoint)
         
         if hsv.saturation > 0.99 {
+            hsv.saturation = 1.0
             tempPoint = self.getPointAtHSV(hsv)
-            hsv = self.getHSVAtPoint(tempPoint)
         }
+        
         self.point = tempPoint
         delegate?.didSelectColor(hsv)
         pointerLayer.fillColor = hsv.cgColor
 
-        drawPointerLayer()
+        self.drawPointerLayer()
     }
 }
