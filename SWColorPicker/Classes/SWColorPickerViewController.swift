@@ -62,10 +62,12 @@ final public class SWColorPickerViewController: UIViewController {
         return view
     }()
     
-    private let redComponentView: ComponentView = {
+    private lazy var redComponentView: ComponentView = {
         let view = ComponentView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.componentLabel.text = "R"
+        view.componentLabel.text = "255"
+        view.colorSlider.tintColor = UIColor(red: 219/255, green: 68/255, blue: 85/255, alpha: 1.0)
+        view.colorSlider.tag = 0
         
         return view
     }()
@@ -73,7 +75,9 @@ final public class SWColorPickerViewController: UIViewController {
     private let greenComponentView: ComponentView = {
         let view = ComponentView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.componentLabel.text = "G"
+        view.componentLabel.text = "255"
+        view.colorSlider.tintColor = UIColor(red: 60/255, green: 179/255, blue: 113/255, alpha: 1.0)
+        view.colorSlider.tag = 1
         
         return view
     }()
@@ -81,11 +85,14 @@ final public class SWColorPickerViewController: UIViewController {
     private let blueComponentView: ComponentView = {
         let view = ComponentView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.componentLabel.text = "B"
+        view.componentLabel.text = "255"
+        view.colorSlider.tintColor = UIColor(red: 75/255, green: 137/255, blue: 220/255, alpha: 1.0)
+        view.colorSlider.tag = 2
         
         return view
     }()
     
+    //MARK: - Init
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .popover
@@ -100,10 +107,65 @@ final public class SWColorPickerViewController: UIViewController {
         super.viewDidLoad()
         self.addSubView()
         self.layout()
-        self.view.backgroundColor = .white
+        self.addTarget()
         
         self.colorWheelView.delegate = self
         self.brightnessView.delegate = self
+        
+        self.view.backgroundColor = .white
+    }
+
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.colorWheelView.moveToPointer(self.selectedColor)
+        self.brightnessView.moveToPointer(self.selectedColor)
+        
+        let rgb = hsvToRGB(self.selectedColor)
+        self.redComponentView.colorSlider.setValue(Float(rgb.red), animated: true)
+        self.greenComponentView.colorSlider.setValue(Float(rgb.green), animated: true)
+        self.blueComponentView.colorSlider.setValue(Float(rgb.blue), animated: true)
+        
+        self.redComponentView.componentLabel.text = "\(Int(floor(rgb.red*255)))"
+        self.greenComponentView.componentLabel.text = "\(Int(floor(rgb.green*255)))"
+        self.blueComponentView.componentLabel.text = "\(Int(floor(rgb.blue*255)))"
+        
+        self.colorLabel.text = hsvToHex(self.selectedColor)
+    }
+    
+    //MARK: - Method
+    private func moveToThumb(_ color: HSV) {
+        let rgb = hsvToRGB(color)
+        self.redComponentView.colorSlider.setValue(Float(rgb.red), animated: true)
+        self.greenComponentView.colorSlider.setValue(Float(rgb.green), animated: true)
+        self.blueComponentView.colorSlider.setValue(Float(rgb.blue), animated: true)
+        
+        self.redComponentView.componentLabel.text = "\(Int(floor(rgb.red*255)))"
+        self.greenComponentView.componentLabel.text = "\(Int(floor(rgb.green*255)))"
+        self.blueComponentView.componentLabel.text = "\(Int(floor(rgb.blue*255)))"
+        
+        self.colorLabel.text = hsvToHex(self.selectedColor)
+    }
+    
+    //MARK: - Selector
+    @objc private func didChangeRGBValue(_ slider: UISlider) {
+        var rgb = hsvToRGB(self.selectedColor)
+        switch slider.tag {
+        case 0: rgb.red = CGFloat(slider.value)
+        case 1: rgb.green = CGFloat(slider.value)
+        case 2: rgb.blue = CGFloat(slider.value)
+        default: break
+        }
+        
+        self.selectedColor = rgbToHSV(rgb)
+        self.colorWheelView.moveToPointer(self.selectedColor)
+        self.brightnessView.moveToPointer(self.selectedColor)
+        self.selectedColorView.backgroundColor = self.selectedColor.uiColor
+        
+        self.redComponentView.componentLabel.text = "\(Int(floor(rgb.red*255)))"
+        self.greenComponentView.componentLabel.text = "\(Int(floor(rgb.green*255)))"
+        self.blueComponentView.componentLabel.text = "\(Int(floor(rgb.blue*255)))"
+        
+        self.colorLabel.text = hsvToHex(self.selectedColor)
     }
     
     //MARK: - AddSubView
@@ -142,23 +204,23 @@ final public class SWColorPickerViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            self.redComponentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.redComponentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             self.redComponentView.topAnchor.constraint(equalTo: self.colorWheelView.bottomAnchor, constant: 40),
-            self.redComponentView.widthAnchor.constraint(equalToConstant: 120),
+            self.redComponentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
             self.redComponentView.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
-            self.greenComponentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.greenComponentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             self.greenComponentView.topAnchor.constraint(equalTo: self.redComponentView.bottomAnchor, constant: 10),
-            self.greenComponentView.widthAnchor.constraint(equalToConstant: 120),
+            self.greenComponentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
             self.greenComponentView.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         NSLayoutConstraint.activate([
-            self.blueComponentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.blueComponentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             self.blueComponentView.topAnchor.constraint(equalTo: self.greenComponentView.bottomAnchor, constant: 10),
-            self.blueComponentView.widthAnchor.constraint(equalToConstant: 120),
+            self.blueComponentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
             self.blueComponentView.heightAnchor.constraint(equalToConstant: 30)
         ])
         
@@ -173,7 +235,13 @@ final public class SWColorPickerViewController: UIViewController {
             self.selectedColorView.widthAnchor.constraint(equalTo: self.colorWheelView.widthAnchor, multiplier: 0.4),
             self.selectedColorView.heightAnchor.constraint(equalTo: self.colorWheelView.widthAnchor, multiplier: 0.4)
         ])
-        
+    }
+    
+    //MARK: - AddTarget
+    private func addTarget() {
+        self.redComponentView.colorSlider.addTarget(self, action: #selector(didChangeRGBValue), for: .valueChanged)
+        self.blueComponentView.colorSlider.addTarget(self, action: #selector(didChangeRGBValue), for: .valueChanged)
+        self.greenComponentView.colorSlider.addTarget(self, action: #selector(didChangeRGBValue), for: .valueChanged)
     }
 }
 
@@ -184,16 +252,14 @@ extension SWColorPickerViewController: ColorWheelViewDelegate, BrightnessViewDel
         self.brightnessView.resetPointLayer()
         self.brightnessView.selectedColor = color
         self.selectedColorView.backgroundColor = color.uiColor
-        let rgb = hsvToRGB(color)
-        redComponentView.inputTextField.text = "\(rgb.red*255)"
-        greenComponentView.inputTextField.text = "\(rgb.green*255)"
-        blueComponentView.inputTextField.text = "\(rgb.blue*255)"
         
+        self.moveToThumb(color) 
     }
     
     public func didChangeBrightness(_ value: CGFloat) {
         self.selectedColor.value = value
         self.selectedColorView.backgroundColor = self.selectedColor.uiColor
         self.colorLabel.text = hsvToHex(self.selectedColor)
+        self.moveToThumb(self.selectedColor)
     }
 }

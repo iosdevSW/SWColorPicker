@@ -11,7 +11,7 @@ public func hsvToRGB(_ hsv: HSV) -> RGB {
     var r,g,b: CGFloat
     let hue = Int(hsv.hue * 6)
     let c = hsv.value * hsv.saturation
-    let m = hsv.value - c
+    let m = hsv.value * (1 - hsv.saturation)
     let a = ((hsv.hue*360)/60).truncatingRemainder(dividingBy: 2)
     let x = c * ( 1 -  abs(a - 1) )
     
@@ -53,9 +53,9 @@ public func rgbToHSV(_ rgb: RGB) -> HSV {
 public func hsvToHex(_ hsv: HSV) -> String {
     let rgb = hsvToRGB(hsv)
     
-    let r = String(Int(rgb.red * 255), radix: 16)
-    let g = String(Int(rgb.green * 255), radix: 16)
-    let b = String(Int(rgb.blue * 255), radix: 16)
+    let r = String(Int(rgb.red * 255), radix: 16).padding(toLength: 2, withPad: "0", startingAt: 0)
+    let g = String(Int(rgb.green * 255), radix: 16).padding(toLength: 2, withPad: "0", startingAt: 0)
+    let b = String(Int(rgb.blue * 255), radix: 16).padding(toLength: 2, withPad: "0", startingAt: 0)
     
     return "#\(r)\(g)\(b)".uppercased()
 }
