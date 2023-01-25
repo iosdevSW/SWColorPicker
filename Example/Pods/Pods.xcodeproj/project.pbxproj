@@ -20,7 +20,7 @@
 		DB11E78C29797534005C67D1 /* SWColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB11E78829797534005C67D1 /* SWColorPickerView.swift */; };
 		DB11E78D297975B9005C67D1 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB11E78529797534005C67D1 /* ComponentView.swift */; };
 		DB11E78E297975BC005C67D1 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB11E78729797534005C67D1 /* ColorWheelView.swift */; };
-		DB2BC81E297FC6EA00A10048 /* ThickTrackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2BC81D297FC6EA00A10048 /* ThickTrackSlider.swift */; };
+		DB27B3B22981632700182490 /* ThickTrackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB27B3B12981632700182490 /* ThickTrackSlider.swift */; };
 		DB2EDCBB2972CF30002B9BB2 /* SWColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2EDCBA2972CF30002B9BB2 /* SWColorPickerViewController.swift */; };
 		DB49DD7E2960A14A00C2359E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49DD7D2960A14A00C2359E /* Protocols.swift */; };
 		DB49DD802960A16300C2359E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49DD7F2960A16300C2359E /* Utils.swift */; };
@@ -77,7 +77,7 @@
 		DB11E78629797534005C67D1 /* BrightnessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrightnessView.swift; sourceTree = "<group>"; };
 		DB11E78729797534005C67D1 /* ColorWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheelView.swift; sourceTree = "<group>"; };
 		DB11E78829797534005C67D1 /* SWColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWColorPickerView.swift; sourceTree = "<group>"; };
-		DB2BC81D297FC6EA00A10048 /* ThickTrackSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThickTrackSlider.swift; sourceTree = "<group>"; };
+		DB27B3B12981632700182490 /* ThickTrackSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThickTrackSlider.swift; path = SWColorPicker/Classes/ThickTrackSlider.swift; sourceTree = "<group>"; };
 		DB2EDCBA2972CF30002B9BB2 /* SWColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SWColorPickerViewController.swift; path = SWColorPicker/Classes/SWColorPickerViewController.swift; sourceTree = "<group>"; };
 		DB49DD792960A0BF00C2359E /* SWColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SWColorPickerView.swift; path = SWColorPicker/Classes/SWColorPickerView.swift; sourceTree = "<group>"; };
 		DB49DD7B2960A12F00C2359E /* ColorWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorWheelView.swift; path = SWColorPicker/Classes/ColorWheelView.swift; sourceTree = "<group>"; };
@@ -157,12 +157,12 @@
 			children = (
 				DB11E78429797534005C67D1 /* view */,
 				DB49DD7D2960A14A00C2359E /* Protocols.swift */,
+				DB27B3B12981632700182490 /* ThickTrackSlider.swift */,
 				DB49DD7F2960A16300C2359E /* Utils.swift */,
 				F1256F97ADDCDD9B888B1B32AEFA49E6 /* ColorModel.swift */,
 				DB2EDCBA2972CF30002B9BB2 /* SWColorPickerViewController.swift */,
 				B883310D898E4A4802961939A423EA70 /* Pod */,
 				55AC680C67B4BE89DB6265D887036964 /* Support Files */,
-				DB2BC81D297FC6EA00A10048 /* ThickTrackSlider.swift */,
 			);
 			name = SWColorPicker;
 			path = ../..;
@@ -429,7 +429,7 @@
 				DB11E78C29797534005C67D1 /* SWColorPickerView.swift in Sources */,
 				DB2EDCBB2972CF30002B9BB2 /* SWColorPickerViewController.swift in Sources */,
 				DB49DD802960A16300C2359E /* Utils.swift in Sources */,
-				DB2BC81E297FC6EA00A10048 /* ThickTrackSlider.swift in Sources */,
+				DB27B3B22981632700182490 /* ThickTrackSlider.swift in Sources */,
 				DB11E78D297975B9005C67D1 /* ComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
