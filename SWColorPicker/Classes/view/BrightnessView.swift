@@ -32,7 +32,10 @@ public class BrightnessView: UIView {
     
     private let pointLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.fillColor = UIColor.lightGray.cgColor
+        layer.fillColor = UIColor.white.cgColor
+        layer.shadowOpacity = 0.4
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 1
         
         return layer
     }()
@@ -51,7 +54,7 @@ public class BrightnessView: UIView {
     }
      
     public override func draw(_ rect: CGRect) {
-        self.barLayer.frame = rect
+        self.barLayer.frame = CGRect(x: 6, y: 0, width: rect.width - 12, height: rect.height)
         self.resetPointLayer()
     }
     
@@ -59,8 +62,8 @@ public class BrightnessView: UIView {
     func moveToPointer(_ hsv: HSV) {
         let newY = (self.frame.height-10) * hsv.value
         let value = (self.frame.height-10.0 - newY)
-//        print(value)
-        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: value, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
+        
+        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: value, width: self.frame.width, height: self.frame.width), cornerRadius: self.frame.width/2).cgPath
     }
     
     private func configureGesture() {
@@ -75,7 +78,7 @@ public class BrightnessView: UIView {
     }
     
     func resetPointLayer() {
-        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: 0, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
+        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: 0, width: self.frame.width, height: self.frame.width), cornerRadius: self.frame.width/2).cgPath
     }
     
     //MARK: - Selector
@@ -83,16 +86,16 @@ public class BrightnessView: UIView {
         let point = gesture.location(in: self)
         var newY = 0.0
         
-        if point.y > self.frame.height-10 {
-            newY = self.frame.height-10
+        if point.y > self.frame.height-self.frame.width {
+            newY = self.frame.height-self.frame.width
         } else if point.y <= 0 {
             newY = 0
         } else {
             newY = point.y
         }
-        let value = (self.frame.height-10.0 - newY) / (self.frame.height-10.0)
+        let value = (self.frame.height-self.frame.width - newY) / (self.frame.height-self.frame.width)
         delegate?.didChangeBrightness(value)
         
-        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: newY, width: self.frame.width, height: 10), cornerRadius: 2).cgPath
+        self.pointLayer.path = UIBezierPath(roundedRect: .init(x: 0, y: newY, width: self.frame.width, height: self.frame.width), cornerRadius: self.frame.width/2).cgPath
     }
 }

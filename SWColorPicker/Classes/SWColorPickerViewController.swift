@@ -113,6 +113,7 @@ final public class SWColorPickerViewController: UIViewController {
         self.brightnessView.delegate = self
         
         self.view.backgroundColor = .white
+        self.selectedColorView.backgroundColor = self.selectedColor.uiColor
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -192,7 +193,7 @@ final public class SWColorPickerViewController: UIViewController {
         NSLayoutConstraint.activate([
             self.brightnessView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             self.brightnessView.topAnchor.constraint(equalTo: self.colorWheelView.topAnchor, constant: 20),
-            self.brightnessView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.065),
+            self.brightnessView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.08),
             self.brightnessView.heightAnchor.constraint(equalTo: self.colorWheelView.heightAnchor, multiplier: 0.8)
         ])
         

@@ -20,6 +20,11 @@ public struct RGB {
     var cgColor: CGColor {
         return uiColor.cgColor
     }
+    
+    var hexCode: String {
+        let hsv = rgbToHSV(self)
+        return hsvToHex(hsv)
+    }
 }
 
 public struct HSV {
@@ -34,5 +39,9 @@ public struct HSV {
 
     var cgColor: CGColor {
         return self.uiColor.cgColor
+    }
+    
+    var hexCode: String {
+        return hsvToHex(self)
     }
 }
