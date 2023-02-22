@@ -13,6 +13,19 @@ public struct RGB {
     var blue: CGFloat
     var alpha: CGFloat
 
+    init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        self.red = red
+        self.green = green
+        self.blue = blue
+        self.alpha = alpha
+    }
+    init(color: UIColor) {
+        self.init(red: color.ciColor.red,
+                  green: color.ciColor.green,
+                  blue: color.ciColor.blue,
+                  alpha: color.ciColor.alpha)
+    }
+    
     var uiColor: UIColor {
         return UIColor(red: self.red, green: self.green, blue: self.blue, alpha: self.alpha)
     }
@@ -35,6 +48,13 @@ public struct HSV {
 
     var uiColor: UIColor {
         return UIColor(hue: self.hue, saturation: self.saturation, brightness: self.value, alpha: self.alpha)
+    }
+    
+    public init(hue: CGFloat, saturation: CGFloat, value: CGFloat, alpha: CGFloat) {
+        self.hue = hue
+        self.saturation = saturation
+        self.value = value
+        self.alpha = alpha
     }
 
     var cgColor: CGColor {
