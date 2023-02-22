@@ -93,8 +93,15 @@ final public class SWColorPickerViewController: UIViewController {
     }()
     
     //MARK: - Init
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    public init(_ color : UIColor) {
         super.init(nibName: nil, bundle: nil)
+        var (h,s,v,a) : (CGFloat,CGFloat,CGFloat,CGFloat) = (0,0,0,0)
+        
+        color.getHue(&h,
+                     saturation: &s,
+                     brightness: &v,
+                     alpha: &a)
+        self.selectedColor = HSV(hue: h, saturation: s, value: v, alpha: a)
         self.modalPresentationStyle = .popover
     }
     

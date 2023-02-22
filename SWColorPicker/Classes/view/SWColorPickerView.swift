@@ -91,11 +91,13 @@ public class SWColorPickerView: UIView {
     
     public init(frame: CGRect, color: UIColor) {
         super.init(frame: frame)
-        let rgb = RGB(red: color.ciColor.red,
-                      green: color.ciColor.green,
-                      blue: color.ciColor.blue,
-                      alpha: color.ciColor.alpha)
-        self.selectedColor = rgbToHSV(rgb)
+        var (h,s,v,a) : (CGFloat,CGFloat,CGFloat,CGFloat) = (0,0,0,0)
+        
+        color.getHue(&h,
+                     saturation: &s,
+                     brightness: &v,
+                     alpha: &a)
+        self.selectedColor = HSV(hue: h, saturation: s, value: v, alpha: a)
     }
     
     required public init?(coder: NSCoder) {
