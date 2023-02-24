@@ -192,7 +192,7 @@ final public class SWColorPickerViewController: UIViewController {
     private func layout() {
         NSLayoutConstraint.activate([
             self.colorWheelView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            self.colorWheelView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.76),
+            self.colorWheelView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7),
             self.colorWheelView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 40),
             self.colorWheelView.heightAnchor.constraint(equalTo: self.colorWheelView.widthAnchor),
         ])
@@ -240,8 +240,8 @@ final public class SWColorPickerViewController: UIViewController {
         NSLayoutConstraint.activate([
             self.selectedColorView.topAnchor.constraint(equalTo: self.colorLabel.bottomAnchor, constant: 4),
             self.selectedColorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.selectedColorView.widthAnchor.constraint(equalTo: self.colorWheelView.widthAnchor, multiplier: 0.4),
-            self.selectedColorView.heightAnchor.constraint(equalTo: self.colorWheelView.widthAnchor, multiplier: 0.4)
+            self.selectedColorView.widthAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.16),
+            self.selectedColorView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.16)
         ])
     }
     
